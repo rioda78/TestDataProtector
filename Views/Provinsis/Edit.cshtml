@@ -1,0 +1,50 @@
+﻿@model TestDataProtector.Models.ProvinsiVm
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Provinsi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <ul>
+                @foreach (var error in ViewData.ModelState.SelectMany(x => x.Value.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+            <div class="form-group">
+                <label asp-for="EncryptedId" class="control-label"></label>
+                <input asp-for="EncryptedId" class="form-control" />
+                <span asp-validation-for="EncryptedId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Provinsi.No" class="control-label"></label>
+                <input asp-for="Provinsi.No" class="form-control" />
+                <span asp-validation-for="Provinsi.No" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Provinsi.Nama" class="control-label"></label>
+                <input asp-for="Provinsi.Nama" class="form-control" />
+                <span asp-validation-for="Provinsi.Nama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
